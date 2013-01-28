@@ -164,6 +164,9 @@
 		// 		}
 		// 	});
 		// }
+
+		$('#wpadminbar a').removeClass('internal');
+
 	})(window);
 
 	</script>
