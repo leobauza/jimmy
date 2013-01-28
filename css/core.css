@@ -1,0 +1,83 @@
+.helvetica {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.overflow {
+  width: auto;
+  float: none;
+  overflow: hidden;
+}
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -ms-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+}
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.LV_validation_message {
+  font-weight: bold;
+  margin: 0 0 0 5px;
+  position: absolute;
+  left: 165px;
+  top: 7px;
+  text-shadow: 1px 1px 0px #f9281c;
+}
+.LV_valid {
+  color: #ffffff;
+}
+.LV_invalid {
+  color: #ffffff;
+}
+.LV_valid_field,
+input.LV_valid_field:hover,
+input.LV_valid_field:active,
+textarea.LV_valid_field:hover,
+textarea.LV_valid_field:active {
+  border: 1px solid #00CC00;
+}
+.LV_invalid_field,
+input.LV_invalid_field:hover,
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover,
+textarea.LV_invalid_field:active {
+  border: 1px solid #CC0000;
+}
+.error_log {
+  display: none;
+  padding: 5px;
+  background: #ffffff;
+  margin: 0 0 15px;
+  border: 2px solid #282626;
+}
+#contact .error_log {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  _height: 30px;
+}
