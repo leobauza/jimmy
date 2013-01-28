@@ -68,8 +68,8 @@
 			</nav>
 			<nav id="social-top">
 				<ul class="group">
-					<li><a href="#" class="dribbble">dribbble</a></li>
-					<li><a href="#" class="twitter">twitter</a></li>
+					<li><a href="http://dribbble.com/billyfrench" target="_blank" class="dribbble">dribbble</a></li>
+					<li><a href="https://twitter.com/billehfrench" target="_blank" class="twitter">twitter</a></li>
 				</ul>
 			</nav>
 			<i class="shadow"></i>
