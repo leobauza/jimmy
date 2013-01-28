@@ -15,7 +15,7 @@
 		
 		//set appropriate margins
 		$(id + ' .summary').css({
-			margin: $heightMargin + "px " + sideMar + "px " + ($heightMargin - 4) + "px " + sideMar + "px"
+			margin: $heightMargin + "px " + sideMar + "px " + "0px " + sideMar + "px"
 		});
 	};
 })( jQuery );

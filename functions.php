@@ -111,23 +111,5 @@
 			)
 		);
 	}
-	
-	register_post_type('blocks', array(	'label' => 'Site Blocks','description' => '','public' => true,'show_ui' => true,'show_in_menu' => true,'capability_type' => 'post','hierarchical' => false,'rewrite' => array('slug' => ''),'query_var' => true,'supports' => array('title','editor','custom-fields','revisions',),'labels' => array (
-	  'name' => 'Site Blocks',
-	  'singular_name' => '',
-	  'menu_name' => 'Site Blocks',
-	  'add_new' => 'Add Site Blocks',
-	  'add_new_item' => 'Add New Site Blocks',
-	  'edit' => 'Edit',
-	  'edit_item' => 'Edit Site Blocks',
-	  'new_item' => 'New Site Blocks',
-	  'view' => 'View Site Blocks',
-	  'view_item' => 'View Site Blocks',
-	  'search_items' => 'Search Site Blocks',
-	  'not_found' => 'No Site Blocks Found',
-	  'not_found_in_trash' => 'No Site Blocks Found in Trash',
-	  'parent' => 'Parent Site Blocks',
-	),) );
-	
-	
+
 ?>
