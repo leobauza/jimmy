@@ -60,7 +60,7 @@ jQuery(function(){
 	//checkVersion();
 
 	$('.row-fluid').each(function(){
-		$(this).find("[class*=\"span\"]:last-child").addClass('l');
+		$(this).find("[class*=\"span\"]:last-child").addClass('l added');
 	});
 	
 
