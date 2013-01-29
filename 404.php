@@ -12,7 +12,7 @@
 				<aside class="feat-text">
 					<article class="summary">
 						<h2>Error 404 - Page Not Found</h2>
-						<p>You've made a terrible mistake coming here...please go back.</p>
+						<p>You've made a terrible mistake coming here...please go back now.</p>
 						<a href="#filter" class="more-btn">Close this terrible error</a>
 					</article>
 				</aside>
