@@ -123,14 +123,14 @@ jQuery(function(){
 
 	//old page load set margins code
 	// if($('.page [data-margin]').length && !$('#hero').length) {
-	// 	console.log('not hero');
-	// 	if($winSize >= 980) {
-	// 		var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
-	// 		$('.page [data-margin]').applyMargins(modMar)
-	// 		
-	// 	} else {
-	// 		$('.page [data-margin] .summary').attr('style','margin:20px 15px');
-	// 	}
+	//	console.log('not hero');
+	//	if($winSize >= 980) {
+	//		var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
+	//		$('.page [data-margin]').applyMargins(modMar)
+	//		
+	//	} else {
+	//		$('.page [data-margin] .summary').attr('style','margin:20px 15px');
+	//	}
 	// }
 
 	$('[href="#filter"]').live("click", function(e){
@@ -171,10 +171,10 @@ jQuery(function(){
  * =============================================================
  */
 	// $('input[type="text"]').focus(function(){
-	// 	var value = $(this).val();
-	// 	if(value == ""){
-	// 		$(this).closest('.input-group').find('label').show();
-	// 	}
+	//	var value = $(this).val();
+	//	if(value == ""){
+	//		$(this).closest('.input-group').find('label').show();
+	//	}
 	// });
 
 	$('input[type="text"]').blur(function(){
@@ -214,7 +214,7 @@ jQuery(function(){
 		
 		var cols = Math.floor( parentWidth / colW );
 		cols = Math.max( cols, 1 );
-
+	
 		// i.e. this.masonry.cols = ....
 		this.masonry.cols = cols;
 		// i.e. this.masonry.columnWidth = ...
@@ -232,7 +232,7 @@ jQuery(function(){
 			this.masonry.colYs.push( 0 );
 		}
 	};
-
+	
 	$.Isotope.prototype._masonryResizeChanged = function() {
 		var prevColCount = this.masonry.cols;
 		// get updated colCount
@@ -274,6 +274,7 @@ jQuery(function(){
 		$container.isotope({ filter: selector });
 		e.preventDefault();
 	});
+
 
 
 }); //end ready function

@@ -564,13 +564,23 @@ footer,
 	}
 }
 #brand {
+	float:left;
+	position:relative;
 	a {
+		display:block;
 		text-decoration:none;
 		color:@white;
-		float:left;
 		&:hover {
 			
 		}
+	}
+	.loading {
+		position:absolute;
+		top:3px;
+		left:115px;
+		display:none;
+		.square(16px, 16px);
+		background:url('../img/ajax-loader.gif') 50% 50% no-repeat;
 	}
 }
 .navs {
@@ -999,7 +1009,7 @@ footer,
 			}
 		}
 	}
-	#site-nav, #brand, #brand a {
+	#site-nav, #brand {
 		float:none;
 		display:block;
 		margin:0 auto;
@@ -1022,6 +1032,9 @@ footer,
 		margin:0 0 8px;
 		a {
 			text-align:center;
+		}
+		.loading {
+			left:5px;
 		}
 	}
 	#social-top {

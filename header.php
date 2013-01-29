@@ -49,7 +49,7 @@
 
 	<header id="site-header">
 		<div class="inner group">
-			<h1 id="brand"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+			<h1 id="brand"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a><div class="loading"></div></h1>
 			<nav id="site-nav" class="links-wrap">
 				<?php
 					//create "main menu" in wordpress backend

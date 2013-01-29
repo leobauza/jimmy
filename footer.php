@@ -76,7 +76,7 @@
 		$("a.internal").live("click",function(e){
 			
 			scroll(0,0); scrollTo(0,0);
-			
+			$('.loading').show();
 			$('.load-overlay').fadeIn();
 			$('.page-cont').slideUp();
 			var 
@@ -120,6 +120,7 @@
 				$('.shadow').css('top','100%');
 				$('.page-cont').delay(500).slideDown(750, function(){
 					$('.load-overlay').fadeOut();
+					$('.loading').hide();
 					//add approrpiate centering for page area
 					if($winSize >= 980) {
 						if($('.page-cont [data-margin]').length) {
