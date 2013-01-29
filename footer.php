@@ -38,7 +38,11 @@
 		// Bind to StateChange Event
 		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 			var 
-				State = History.getState(); // Note: We are using History.getState() instead of event.state
+				State = History.getState(), // Note: We are using History.getState() instead of event.state
+				stateData = State.data
+			;
+			console.log(State);
+
 		});
 
 
@@ -75,14 +79,6 @@
 		//navigation click
 		$("a.internal").live("click",function(e){
 			
-			scroll(0,0); //scrollTo(0,0);
-			$('.loading').show();
-			$('.load-overlay').fadeIn();
-			$('.page-cont').slideUp();
-			var 
-				url = $(this).attr('href'),
-				relativeUrl = url.replace(rootUrl,'');
-			;
 			//request that page, greg style
 			var pageRequest = $.ajax({
 				url: url,
@@ -104,9 +100,9 @@
 
 					// update google analytics here
 					// if ( typeof window.pageTracker !== 'undefined' ) {
-					// 	window.pageTracker._trackPageview(relativeUrl);
-					// 	//or for the newer tracking code
-					// 	_gaq.push(['_trackPageview', relativeUrl]);
+					//	window.pageTracker._trackPageview(relativeUrl);
+					//	//or for the newer tracking code
+					//	_gaq.push(['_trackPageview', relativeUrl]);
 					// }
 
 					History.pushState(null, $title, url); // uh? change title and update url
@@ -115,6 +111,16 @@
 
 				}
 			}); //end ajax
+			
+			
+			scroll(0,0); //scrollTo(0,0);
+			$('.loading').show();
+			$('.load-overlay').fadeIn();
+			$('.page-cont').slideUp();
+			var 
+				url = $(this).attr('href'),
+				relativeUrl = url.replace(rootUrl,'');
+			;
 			//after a succesful page request rock out
 			pageRequest.done(function(msg){
 				$('.shadow').css('top','100%');
@@ -152,21 +158,26 @@
 
 		//old only on landing page
 		// if($('#hero').length) {
-		// 	$('.home .page').delay(500).slideDown(750, function(){
-		// 		$('.home .load-overlay').fadeOut();
-		// 		//call the margin set
-		// 		if($('.page [data-margin]').length) {
-		// 			if($winSize < 980) {
-		// 				$('.page [data-margin] .summary').attr('style','margin:20px 15px');
-		// 			} else {
-		// 				var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
-		// 				$('.page [data-margin]').applyMargins(modMar);
-		// 			} 
-		// 		}
-		// 	});
+		//	$('.home .page').delay(500).slideDown(750, function(){
+		//		$('.home .load-overlay').fadeOut();
+		//		//call the margin set
+		//		if($('.page [data-margin]').length) {
+		//			if($winSize < 980) {
+		//				$('.page [data-margin] .summary').attr('style','margin:20px 15px');
+		//			} else {
+		//				var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
+		//				$('.page [data-margin]').applyMargins(modMar);
+		//			} 
+		//		}
+		//	});
 		// }
 
 		$('#wpadminbar a').removeClass('internal');
+
+		//back button?
+		
+
+
 
 	})(window);
 
