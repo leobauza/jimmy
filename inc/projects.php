@@ -25,10 +25,16 @@
 		<?php while( $my_query->have_posts() ) : $my_query->the_post();
 			//add the correct class
 			$projectType = get_field('project_type');
-			echo "<div class=\"item ". $projectType. "\">";
+			if(is_array($projectType)) {
+				$splitType = implode(' ', get_field('project_type'));
+			} else {
+				$splitType = $projectType;
+			}
+			echo "<div class=\"item ". $splitType. "\">";
 			$main_image = get_field('main_image');
 			$custom_thumb = get_field('custom_thumb');
 			?>
+			
 			<a href="<?php the_permalink(); ?>">
 				<?php if(!$custom_thumb ) :?>
 				<img src="<?php echo $main_image['sizes']['sorter-size']; ?>" alt="" />
