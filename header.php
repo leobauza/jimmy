@@ -30,7 +30,7 @@
 		   ?>
 	</title>
 	
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.png">
 	
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/styles.css">
 	
