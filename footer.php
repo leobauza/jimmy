@@ -35,6 +35,28 @@
 		;
 
 
+		function loadNewPage(){
+			console.log("loadNewPage function");
+			$('.shadow').css('top','100%');
+			$('.page-cont').delay(500).slideDown(750, function(){
+				$('.load-overlay').fadeOut();
+				$('.loading').hide();
+				//add approrpiate centering for page area
+				if($winSize >= 980) {
+					if($('.page-cont [data-margin]').length) {
+						var
+							modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
+							imgheight = $('.page-cont img').height()
+						;
+						$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
+					}
+				} else {
+					$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
+				}
+			}); // end slide down
+		} // end load new page
+
+
 		// Bind to StateChange Event
 		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 			var 
@@ -42,7 +64,34 @@
 				stateData = State.data
 			;
 			console.log(State);
+			var url = State.url;
+			
+			if(clickEvent == 0) {
+				var	 pageRequest = $.ajax({
+					url: url,
+					success: function(data){
+						console.log('state change event ajax');
 
+						//prepare
+						var
+							$data = $(documentHtml(data)),
+							$title = $data.find('.document-title:first').text(),
+							$newPage = $data.find(".page-cont").html()
+						;
+						$('.page-cont').html($newPage);
+
+						// update google analytics here
+						// if ( typeof window.pageTracker !== 'undefined' ) {
+						//	window.pageTracker._trackPageview(relativeUrl);
+						//	//or for the newer tracking code
+						//	_gaq.push(['_trackPageview', relativeUrl]);
+						// }
+						loadNewPage();
+					}
+				}); //end ajax
+			} else {
+				clickEvent = 0;
+			}
 		});
 
 
@@ -75,14 +124,16 @@
 
 		});
 
-
+		var clickEvent = 0;
 		//navigation click
 		$("a.internal").live("click",function(e){
-			
+			clickEvent = 1;
 			//request that page, greg style
 			var pageRequest = $.ajax({
 				url: url,
 				success: function(data){
+					console.log('click event ajax')
+					
 					//prepare
 					var
 						$data = $(documentHtml(data)),
@@ -123,6 +174,7 @@
 			;
 			//after a succesful page request rock out
 			pageRequest.done(function(msg){
+				console.log("page request done");
 				$('.shadow').css('top','100%');
 				$('.page-cont').delay(500).slideDown(750, function(){
 					$('.load-overlay').fadeOut();
@@ -139,7 +191,7 @@
 					} else {
 						$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
 					}
-				});
+				}); // end slide down 
 
 				//check internals after ajax
 				$(".more-btn").each(function(){
@@ -173,9 +225,6 @@
 		// }
 
 		$('#wpadminbar a').removeClass('internal');
-
-		//back button?
-		
 
 
 
