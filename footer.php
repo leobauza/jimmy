@@ -129,6 +129,7 @@
 		$("a.internal").live("click",function(e){
 			clickEvent = 1;
 			//request that page, greg style
+			console.log(url);
 			var pageRequest = $.ajax({
 				url: url,
 				success: function(data){
