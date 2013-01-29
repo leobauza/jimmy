@@ -1138,7 +1138,61 @@ footer:after,
 .row-fluid .span12 {
   width: 98.99999996%;
 }
-@media (max-width: 0px) {
+@media (max-width: 600px) {
+  body {
+    min-width: 0;
+  }
+  #site-header .inner {
+    padding: 10px;
+  }
+  #site-header .inner .shadow {
+    display: none;
+  }
+  #site-nav,
+  #brand,
+  #brand a {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+  #site-nav {
+    margin: 0 0 5px;
+  }
+  #site-nav ul {
+    display: block;
+    text-align: center;
+  }
+  #site-nav ul li {
+    float: none;
+    display: inline;
+  }
+  #site-nav ul li a {
+    padding: 0 10px;
+  }
+  #brand {
+    margin: 0 0 8px;
+  }
+  #brand a {
+    text-align: center;
+  }
+  #social-top {
+    margin: 0 0 5px;
+    position: static;
+  }
+  #social-top ul {
+    display: block;
+    text-align: center;
+  }
+  #social-top ul li {
+    display: inline;
+    float: none;
+  }
+  #social-top ul li a {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    _height: 30px;
+  }
   /*margin right instead of margin left to do overflow hidden*/
   .row-fluid > [class*="span"] {
     float: none;
@@ -1161,7 +1215,15 @@ footer:after,
   #hero .feat-img img {
     width: 100%;
   }
+  #filters ul li a {
+    line-height: 1.5em;
+  }
+  #single-project .summary {
+    margin: 0;
+    padding: 30px 20px 30px;
+  }
 }
+/*end 600 @media*/
 @media only screen and (device-width: 768px) {
   /* For general iPad layouts */
 }
