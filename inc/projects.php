@@ -25,9 +25,12 @@
 		<?php while( $my_query->have_posts() ) : $my_query->the_post();
 			//add the correct class
 			$projectType = get_field('project_type');
+			
+			//if array it splits the array and gives me something usable for classes
 			if(is_array($projectType)) {
 				$splitType = implode(' ', get_field('project_type'));
 			} else {
+				//just spits out the value
 				$splitType = $projectType;
 			}
 			echo "<div class=\"item ". $splitType. "\">";
