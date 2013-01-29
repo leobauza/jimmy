@@ -174,7 +174,8 @@ p {
 }
 p a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 100;
+  font-style: italic;
   color: #ffffff;
 }
 p a:hover {
@@ -1049,6 +1050,8 @@ footer:after,
 #site-footer .copy a {
   text-decoration: none;
   color: #282626;
+  font-weight: 600;
+  font-style: normal;
 }
 /******STRUCTURE******/
 .page-wrap {
