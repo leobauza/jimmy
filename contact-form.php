@@ -59,9 +59,6 @@
 		</div>
 
 
-		<noscript>
-			no
-		</noscript>
 
 
 		<!-- end page content -->

@@ -75,7 +75,7 @@
 		//navigation click
 		$("a.internal").live("click",function(e){
 			
-			scroll(0,0); scrollTo(0,0);
+			scroll(0,0); //scrollTo(0,0);
 			$('.loading').show();
 			$('.load-overlay').fadeIn();
 			$('.page-cont').slideUp();
