@@ -1013,7 +1013,16 @@ footer:after,
 #single-project #main-img .img-wrap.last {
   margin: 30px 30px 0px 30px;
 }
+#single-project #main-img figcaption {
+  background: #ffffff;
+  padding: 10px;
+  margin: 0;
+}
+#single-project #main-img .border {
+  border: 10px solid #ffffff;
+}
 #single-project #main-img img {
+  width: 100%;
   display: block;
 }
 /****** FOOTER ******/
