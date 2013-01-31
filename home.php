@@ -31,7 +31,9 @@
 							echo "no-image";
 						endif;
 						?>
-						<img src="<?php echo $feature_image['url']; ?>" alt="" />
+						<a class="internal" href="<?php the_permalink(); ?>">
+							<img src="<?php echo $feature_image['url']; ?>" alt="" />
+						</a>
 					</figure>
 					<aside class="feat-text">
 						<article class="summary">
