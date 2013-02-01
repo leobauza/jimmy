@@ -36,7 +36,7 @@
 
 
 		function loadNewPage(){
-			console.log("loadNewPage function");
+			//console.log("loadNewPage function");
 			$('.shadow').css('top','100%');
 			$('.page-cont').delay(500).slideDown(750, function(){
 				$('.load-overlay').fadeOut();
@@ -174,7 +174,7 @@
 			var pageRequest = $.ajax({
 				url: url,
 				success: function(data){
-					console.log('click event ajax')
+					//console.log('click event ajax')
 					
 					//prepare
 					var
@@ -197,7 +197,7 @@
 
 			//after a succesful page request rock out
 			pageRequest.done(function(msg){
-				console.log("page request done");
+				//console.log("page request done");
 				//load new page does everything commented out below
 				loadNewPage();
 				// $('.shadow').css('top','100%');
