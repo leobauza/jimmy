@@ -16,7 +16,7 @@
 							<a href="#filter" class="more-btn">Back to work</a>
 						</article>
 					</aside>
-					<figure id="main-img" class="span8">
+					<figure id="main-img" class="span8 l">
 						<?php
 						
 							$main_image = get_field('main_image');
@@ -91,30 +91,7 @@
 			</div>
 			<!-- end page content -->
 
-			<noscript>
-				<div class="page-cont">
-					<!-- featured content -->
-					<section id="single-project" class="row-fluid">
-						<aside class="span4">
-							<article class="summary">
-								<h2><?php the_title(); ?></h2>
-								<?php the_content(); ?>
-								<a href="#filter" class="more-btn">Back to work</a>
-							</article>
-						</aside>
-						<figure id="main-img" class="span8">
-							<?php
 
-								$main_image = get_field('main_image');
-								//var_dump($main_image);
-							?>
-							<div class="img-wrap">
-								<img src="<?php echo $main_image['url']; ?>" alt="" />
-							</div>
-						</figure>
-					</section>
-				</div>
-			</noscript>
 
 
 		</section>

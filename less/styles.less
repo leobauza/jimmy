@@ -1094,11 +1094,24 @@ footer,
 	}
 } /*end 600 @media*/
 
+
+
 @media only screen and (device-width: 768px) {
+
 	/* For general iPad layouts */
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+@media only screen and (max-device-width: 800px) {
+
+	#projects {
+		.item {
+			a, a:hover {
+				.item-overlay {
+					display:none;
+				}
+			}
+		}
+	}
 	/* For portrait layouts only */
 }
 

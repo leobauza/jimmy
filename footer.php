@@ -35,10 +35,94 @@
 		;
 
 
+		function loadNewPage(){
+			//console.log("loadNewPage function");
+			$('.shadow').css('top','100%');
+			$('.page-cont').delay(500).slideDown(750, function(){
+				$('.load-overlay').fadeOut();
+				$('.loading').hide();
+				//add approrpiate centering for page area
+				if($winSize >= 980) {
+					if($('.page-cont [data-margin]').length) {
+						var
+							modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
+							imgheight = $('.page-cont img').height()
+						;
+						$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
+					}
+				} else {
+					$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
+				}
+			}); // end slide down
+			//check internals after ajax
+			$(".more-btn").each(function(){
+				var
+					$this = $(this),
+					url = $this.attr('href')||''
+				;
+				//check links
+				if(url.substring(0,rootUrl.length) === rootUrl) {//|| url.indexOf(':') === -1) {
+					$this.addClass('internal')
+				}
+			}); //end each function
+		} // end load new page
+
+		function updateMenu(relativeUrl, url){
+			// Update the menu
+			$menuChildren = $menu.find(menuChildrenSelector);
+			$menuChildren.filter(activeSelector).removeClass(activeClass);
+			$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+			if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
+		}
+
+		function googleAnalytics() {
+			// update google analytics here
+			// if ( typeof window.pageTracker !== 'undefined' ) {
+			//	window.pageTracker._trackPageview(relativeUrl);
+			//	//or for the newer tracking code
+			//	_gaq.push(['_trackPageview', relativeUrl]);
+			// }
+			
+		}
+
 		// Bind to StateChange Event
 		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 			var 
 				State = History.getState(); // Note: We are using History.getState() instead of event.state
+			
+			if(clickEvent == 0) {
+				//animation and set up url for request
+				scroll(0,0); //scrollTo(0,0);
+				$('.loading').show();
+				$('.load-overlay').fadeIn();
+				$('.page-cont').slideUp();
+				var 
+					url = State.url;
+					relativeUrl = url.replace(rootUrl,'');
+				;
+				
+				var pageRequest = $.ajax({
+					url: url,
+					success: function(data){
+						//prepare
+						var
+							$data = $(documentHtml(data)),
+							$title = $data.find('.document-title:first').text(),
+							$newPage = $data.find(".page-cont").html()
+						;
+						$('.page-cont').html($newPage);
+
+						//updates the active link
+						updateMenu(relativeUrl, url);
+						//triggers google analytics tracking
+						googleAnalytics();
+						//animates the new page open
+						loadNewPage();
+					}
+				}); //end ajax
+			} else {
+				clickEvent = 0;
+			}
 		});
 
 
@@ -71,22 +155,27 @@
 
 		});
 
-
+		var clickEvent = 0;
 		//navigation click
 		$("a.internal").live("click",function(e){
-			
-			scroll(0,0); scrollTo(0,0);
+			//dont fire the code in statechange function
+			clickEvent = 1;
+			scroll(0,0); //scrollTo(0,0);
 			$('.loading').show();
 			$('.load-overlay').fadeIn();
 			$('.page-cont').slideUp();
+			//set up the url for ajax and updating menu
 			var 
 				url = $(this).attr('href'),
 				relativeUrl = url.replace(rootUrl,'');
 			;
+			
 			//request that page, greg style
 			var pageRequest = $.ajax({
 				url: url,
 				success: function(data){
+					//console.log('click event ajax')
+					
 					//prepare
 					var
 						$data = $(documentHtml(data)),
@@ -94,79 +183,75 @@
 						$newPage = $data.find(".page-cont").html(),
 						$menuChildren
 					;
-					// Update the menu
-					$menuChildren = $menu.find(menuChildrenSelector);
-					$menuChildren.filter(activeSelector).removeClass(activeClass);
-					$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
+
+					updateMenu(relativeUrl,url);
 
 					$('.page-cont').html($newPage);
-
-					// update google analytics here
-					// if ( typeof window.pageTracker !== 'undefined' ) {
-					// 	window.pageTracker._trackPageview(relativeUrl);
-					// 	//or for the newer tracking code
-					// 	_gaq.push(['_trackPageview', relativeUrl]);
-					// }
-
+					googleAnalytics();
 					History.pushState(null, $title, url); // uh? change title and update url
 
 
 
 				}
 			}); //end ajax
+
 			//after a succesful page request rock out
 			pageRequest.done(function(msg){
-				$('.shadow').css('top','100%');
-				$('.page-cont').delay(500).slideDown(750, function(){
-					$('.load-overlay').fadeOut();
-					$('.loading').hide();
-					//add approrpiate centering for page area
-					if($winSize >= 980) {
-						if($('.page-cont [data-margin]').length) {
-							var
-								modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
-								imgheight = $('.page-cont img').height()
-							;
-							$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
-						}
-					} else {
-						$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
-					}
-				});
-
-				//check internals after ajax
-				$(".more-btn").each(function(){
-					var
-						$this = $(this),
-						url = $this.attr('href')||''
-					;
-					//check links
-					if(url.substring(0,rootUrl.length) === rootUrl) {//|| url.indexOf(':') === -1) {
-						$this.addClass('internal')
-					}
-				}); //end each function
+				//console.log("page request done");
+				//load new page does everything commented out below
+				loadNewPage();
+				// $('.shadow').css('top','100%');
+				// $('.page-cont').delay(500).slideDown(750, function(){
+				// 	$('.load-overlay').fadeOut();
+				// 	$('.loading').hide();
+				// 	//add approrpiate centering for page area
+				// 	if($winSize >= 980) {
+				// 		if($('.page-cont [data-margin]').length) {
+				// 			var
+				// 				modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
+				// 				imgheight = $('.page-cont img').height()
+				// 			;
+				// 			$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
+				// 		}
+				// 	} else {
+				// 		$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
+				// 	}
+				// }); // end slide down 
+				// 
+				// //check internals after ajax
+				// $(".more-btn").each(function(){
+				// 	var
+				// 		$this = $(this),
+				// 		url = $this.attr('href')||''
+				// 	;
+				// 	//check links
+				// 	if(url.substring(0,rootUrl.length) === rootUrl) {//|| url.indexOf(':') === -1) {
+				// 		$this.addClass('internal')
+				// 	}
+				// }); //end each function
 			}); //end page request
 			e.preventDefault();
 		}); //end click
 
 		//old only on landing page
 		// if($('#hero').length) {
-		// 	$('.home .page').delay(500).slideDown(750, function(){
-		// 		$('.home .load-overlay').fadeOut();
-		// 		//call the margin set
-		// 		if($('.page [data-margin]').length) {
-		// 			if($winSize < 980) {
-		// 				$('.page [data-margin] .summary').attr('style','margin:20px 15px');
-		// 			} else {
-		// 				var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
-		// 				$('.page [data-margin]').applyMargins(modMar);
-		// 			} 
-		// 		}
-		// 	});
+		//	$('.home .page').delay(500).slideDown(750, function(){
+		//		$('.home .load-overlay').fadeOut();
+		//		//call the margin set
+		//		if($('.page [data-margin]').length) {
+		//			if($winSize < 980) {
+		//				$('.page [data-margin] .summary').attr('style','margin:20px 15px');
+		//			} else {
+		//				var modMar = parseFloat($('.page [data-margin]').attr('data-margin'));
+		//				$('.page [data-margin]').applyMargins(modMar);
+		//			} 
+		//		}
+		//	});
 		// }
 
 		$('#wpadminbar a').removeClass('internal');
+
+
 
 	})(window);
 

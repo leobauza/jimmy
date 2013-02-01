@@ -18,9 +18,6 @@
 	<?php if( $my_query->have_posts() ) : ?>
 		<!-- open starting div before loop -->
 		<section id="projects" class="links-wrap"> 
-			<noscript>
-				please enable javascript to see projects
-			</noscript>
 
 		<?php while( $my_query->have_posts() ) : $my_query->the_post();
 			//add the correct class
