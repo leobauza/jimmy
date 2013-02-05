@@ -75,15 +75,6 @@
 			if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
 		}
 
-		function googleAnalytics() {
-			// update google analytics here
-			if ( typeof window.pageTracker !== 'undefined' ) {
-				//window.pageTracker._trackPageview(relativeUrl);
-				//or for the newer tracking code
-				_gaq.push(['_trackPageview', relativeUrl]);
-			}
-		}
-
 		// Bind to StateChange Event
 		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 			var 
@@ -113,8 +104,13 @@
 
 						//updates the active link
 						updateMenu(relativeUrl, url);
-						//triggers google analytics tracking
-						googleAnalytics();
+						// update google analytics here
+						//if ( typeof window.pageTracker !== 'undefined' ) {
+							//window.pageTracker._trackPageview(relativeUrl);
+							//or for the newer tracking code
+							_gaq.push(['_trackPageview', relativeUrl]);
+						//}
+
 						//animates the new page open
 						loadNewPage();
 					}
@@ -186,7 +182,13 @@
 					updateMenu(relativeUrl,url);
 
 					$('.page-cont').html($newPage);
-					googleAnalytics();
+					// update google analytics here
+					//if ( typeof window.pageTracker !== 'undefined' ) {
+						//window.pageTracker._trackPageview(relativeUrl);
+						//or for the newer tracking code
+						_gaq.push(['_trackPageview', relativeUrl]);
+					//}
+
 					History.pushState(null, $title, url); // uh? change title and update url
 
 
