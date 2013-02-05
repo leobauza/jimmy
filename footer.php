@@ -77,12 +77,11 @@
 
 		function googleAnalytics() {
 			// update google analytics here
-			// if ( typeof window.pageTracker !== 'undefined' ) {
-			//	window.pageTracker._trackPageview(relativeUrl);
-			//	//or for the newer tracking code
-			//	_gaq.push(['_trackPageview', relativeUrl]);
-			// }
-			
+			if ( typeof window.pageTracker !== 'undefined' ) {
+				//window.pageTracker._trackPageview(relativeUrl);
+				//or for the newer tracking code
+				_gaq.push(['_trackPageview', relativeUrl]);
+			}
 		}
 
 		// Bind to StateChange Event
@@ -202,32 +201,32 @@
 				loadNewPage();
 				// $('.shadow').css('top','100%');
 				// $('.page-cont').delay(500).slideDown(750, function(){
-				// 	$('.load-overlay').fadeOut();
-				// 	$('.loading').hide();
-				// 	//add approrpiate centering for page area
-				// 	if($winSize >= 980) {
-				// 		if($('.page-cont [data-margin]').length) {
-				// 			var
-				// 				modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
-				// 				imgheight = $('.page-cont img').height()
-				// 			;
-				// 			$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
-				// 		}
-				// 	} else {
-				// 		$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
-				// 	}
+				//	$('.load-overlay').fadeOut();
+				//	$('.loading').hide();
+				//	//add approrpiate centering for page area
+				//	if($winSize >= 980) {
+				//		if($('.page-cont [data-margin]').length) {
+				//			var
+				//				modMar = parseFloat($('.page-cont [data-margin]').attr('data-margin')),
+				//				imgheight = $('.page-cont img').height()
+				//			;
+				//			$('.page-cont [data-margin]').applyMargins(modMar, imgheight);
+				//		}
+				//	} else {
+				//		$('.page-cont [data-margin] .summary').attr('style','margin:20px 15px');
+				//	}
 				// }); // end slide down 
 				// 
 				// //check internals after ajax
 				// $(".more-btn").each(function(){
-				// 	var
-				// 		$this = $(this),
-				// 		url = $this.attr('href')||''
-				// 	;
-				// 	//check links
-				// 	if(url.substring(0,rootUrl.length) === rootUrl) {//|| url.indexOf(':') === -1) {
-				// 		$this.addClass('internal')
-				// 	}
+				//	var
+				//		$this = $(this),
+				//		url = $this.attr('href')||''
+				//	;
+				//	//check links
+				//	if(url.substring(0,rootUrl.length) === rootUrl) {//|| url.indexOf(':') === -1) {
+				//		$this.addClass('internal')
+				//	}
 				// }); //end each function
 			}); //end page request
 			e.preventDefault();
@@ -254,6 +253,19 @@
 
 
 	})(window);
+
+	</script>
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-38051085-1']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
 
 	</script>
 
