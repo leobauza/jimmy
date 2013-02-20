@@ -780,6 +780,9 @@ footer:after,
   float: right;
   margin: 3px 80px 0 0;
 }
+#site-nav ul {
+  width: 340px;
+}
 #site-nav ul li {
   float: left;
 }
@@ -805,6 +808,9 @@ footer:after,
   position: absolute;
   right: 10px;
   top: 25px;
+}
+#social-top ul {
+  width: 80px;
 }
 #social-top ul li {
   float: left;
@@ -1176,7 +1182,8 @@ footer:after,
   }
   #site-nav ul {
     display: block;
-    text-align: center;
+    width: 270px;
+    margin: 0 auto;
   }
   #site-nav ul li {
     float: none;
@@ -1200,17 +1207,7 @@ footer:after,
   }
   #social-top ul {
     display: block;
-    text-align: center;
-  }
-  #social-top ul li {
-    display: inline;
-    float: none;
-  }
-  #social-top ul li a {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    _height: 30px;
+    margin: 0 auto;
   }
   /*margin right instead of margin left to do overflow hidden*/
   .row-fluid > [class*="span"] {
